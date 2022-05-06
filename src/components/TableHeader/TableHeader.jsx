@@ -4,7 +4,7 @@ const TableHeader = ({ cars }) => {
          <tr>
             {
                Object.entries(cars[0]).map((carData) =>
-                  <th scope="col">{carData[0]}</th>
+                  <th key={carData[0]} scope="col">{carData[0]}</th>
                )
             }
          </tr>

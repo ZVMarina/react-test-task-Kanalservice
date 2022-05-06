@@ -3,7 +3,7 @@ const TableBody = ({ cars }) => {
       <tbody>
          {
             cars.map((car) =>
-               <tr>
+               <tr key={car.id}>
                   <th scope="row">{car.id}</th>
                   <td>{car.name}</td>
                   <td>{car.distance}</td>
