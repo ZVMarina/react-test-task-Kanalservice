@@ -3,15 +3,17 @@ import TableBody from "../TableBody/TableBody";
 import TableHeader from "../TableHeader/TableHeader";
 
 const Table = ({ cars }) => {
-    console.log(cars);
-    return (
-        cars.length
-        &&
-        <table className="table">
+   console.log(cars);
+   return (
+      cars.length
+      &&
+      <div>
+         <table className="table table-striped">
             <TableHeader cars={cars} />
             <TableBody cars={cars} />
-        </table>
-    )
+         </table>
+      </div>
+   )
 };
 
 export default Table;
