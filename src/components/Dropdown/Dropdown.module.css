@@ -1,3 +1,9 @@
-.dropdown {
+.dropdownMenu {
     grid-area: dd;
+    width: 100%;
+    max-width: 30%;
+}
+
+.icon {
+    height: 20px;
 }
