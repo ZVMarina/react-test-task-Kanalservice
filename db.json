@@ -1,0 +1,37 @@
+[
+    {
+        "id": 1,
+        "name": "BMW",
+        "distance": 20000,
+        "date": "Thu May 05 2022 07:21:28 GMT+0700 (GMT+07:00)",
+        "quantity": 1
+    },
+    {
+        "id": 2,
+        "name": "Audi",
+        "distance": 25000,
+        "date": "Thu June 06 2022 07:21:28 GMT+0700 (GMT+07:00)",
+        "quantity": 1
+    },
+    {
+        "id": 3,
+        "name": "Honda",
+        "distance": 30000,
+        "date": "Thu July 07 2022 07:21:28 GMT+0700 (GMT+07:00)",
+        "quantity": 1
+    },
+    {
+        "id": 4,
+        "name": "Toyota",
+        "distance": 35000,
+        "date": "Thu August 08 2022 07:21:28 GMT+0700 (GMT+07:00)",
+        "quantity": 1
+    },
+    {
+        "id": 5,
+        "name": "September",
+        "distance": 40000,
+        "date": "Thu May 09 2022 07:21:28 GMT+0700 (GMT+07:00)",
+        "quantity": 1
+    }
+]
