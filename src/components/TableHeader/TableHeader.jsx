@@ -1,14 +1,13 @@
 const TableHeader = ({ cars }) => {
     return (
         <thead>
-            <th scope="col">#</th>
-            {
-                Object.entries(cars[0]).map((carData) =>
-                    <tr>
+            <tr>
+                {
+                    Object.entries(cars[0]).map((carData) =>
                         <th scope="col">{carData[0]}</th>
-                    </tr>
-                )
-            }
+                    )
+                }
+            </tr>
         </thead>
     )
 }
