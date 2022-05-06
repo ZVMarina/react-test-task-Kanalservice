@@ -6,9 +6,20 @@
     width: 100%;
     height: 100%;
     padding: 0 25px;
+    margin-top: 50px;
+    display: grid;
+    grid-template-areas: 
+    "title title"
+    "dd table";
+    align-content: start;
+    row-gap: 25px;
+    column-gap: 25px;
+    grid-template-columns: min-content;
+
 }
 
 .title {
-    margin: 40px 0 30px 0;
+    grid-area: title;
     text-align: center;
+    margin: 0;
 } 

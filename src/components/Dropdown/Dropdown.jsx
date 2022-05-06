@@ -1,11 +1,12 @@
 import { useRef, useState } from "react";
+import styles from './Dropdown.module.css'
 
 const Dropdown = () => {
     const dropdownRef = useRef(null);
     const [isActive, setIsActive] = useState(false);
   
     return (
-        <div>Dropdown</div>
+        <div className={styles.dropdown}>Dropdown</div>
     );
   };
 
