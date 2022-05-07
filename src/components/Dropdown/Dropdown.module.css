@@ -24,12 +24,12 @@
 }
 
 .menu {
-    background: #ffffff;
-    border-radius: 8px;
+    width: max-content;
     position: absolute;
     top: 50px;
     left: 0;
-    width: 300px;
+    background: #ffffff;
+    border-radius: 8px;
     box-shadow: 0 1px 8px rgba(0, 0, 0, 0.3);
     opacity: 0;
     visibility: hidden;

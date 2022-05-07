@@ -1,4 +1,5 @@
 import Dropdown from "../../Dropdown/Dropdown";
+import styles from '../../Filter/Filter.module.css';
 
 const FilterByCondition = () => {
     return (
@@ -10,10 +11,10 @@ const FilterByCondition = () => {
             list=
             {
                 <ul>
-                    <li>equally</li>
-                    <li>more</li>
-                    <li>less</li>
-                    <li>contains</li>
+                    <li className={styles.item}>equally</li>
+                    <li className={styles.item}>more</li>
+                    <li className={styles.item}>less</li>
+                    <li className={styles.item}>contains</li>
                 </ul>
             }
         />

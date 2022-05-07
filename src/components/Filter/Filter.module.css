@@ -1,4 +1,6 @@
 .item {
     border-bottom: 1px solid #dddddd;
     cursor: pointer;
+    padding-left: 20px;
+    padding-right: 20px;
 }

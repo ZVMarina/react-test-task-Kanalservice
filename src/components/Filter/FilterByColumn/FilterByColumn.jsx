@@ -1,19 +1,27 @@
 import Dropdown from "../../Dropdown/Dropdown";
 import styles from '../../Filter/Filter.module.css';
 
-const FilterByColumn = () => {
+const FilterByColumn = ({ activeFilter, filterList, select }) => {
     return (
         <Dropdown
             trigger=
             {
-                <span>Filter</span>
+                <span>{activeFilter}</span>
             }
             list=
             {
-                <ul>
-                    <li className={styles.item}>name</li>
-                    <li className={styles.item}>distance</li>
-                    <li className={styles.item}>quantity</li>
+                <ul className={styles.list}>
+                    {
+                        filterList.map(filter =>
+                            <li
+                                className={styles.item}
+                                key={filter}
+                                onClick={() => select(filter)}
+                            >
+                                {filter}
+                            </li>
+                        )
+                    }
                 </ul>
             }
         />
