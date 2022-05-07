@@ -1,8 +1,9 @@
 .container {
     grid-area: dd;
     width: 100%;
-    max-width: 30%;
+    min-width: 105px;
     position: relative;
+    margin-top: 8px;
 }
 
 .trigger {

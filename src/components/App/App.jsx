@@ -12,6 +12,16 @@ const App = () => {
    const [filterColumns, seFilterColumns] = useState([]);
    const [activeFilterColumn, setActiveFilterColumn] = useState('Select filter');
 
+   const generateArrFilter = (data) => {
+      const keys = Object.keys(data[0]);
+      const filters = keys.filter(filter => {
+         if (filter !== 'date' && filter !== 'id') {
+            return filter;
+         }
+      })
+      return filters;
+   }
+
    useEffect(() => {
       const getData = async () => {
          const { data } = await axios({
@@ -19,7 +29,7 @@ const App = () => {
             url: `https://mocki.io/v1/92a881cd-33a9-4f44-ab5a-7cc399c34b75`
          })
          setCars(data);
-         seFilterColumns(Object.keys(data[0]));
+         seFilterColumns(generateArrFilter(data));
       }
       getData();
    }, [])
