@@ -1,9 +1,77 @@
-.dropdownMenu {
+.container{
     grid-area: dd;
     width: 100%;
     max-width: 30%;
+    position: relative;
+}
+
+.trigger {
+    cursor: pointer;
+    background: #ffffff;
+    border-radius: 90px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 4px 6px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+    border: none;
+    vertical-align: middle;
+    transition: box-shadow 0.4s ease;
+}
+
+.trigger:hover {
+    box-shadow: 0 1px 8px rgba(0, 0, 0, 0.3);
+}
+
+.menu {
+    background: #ffffff;
+    border-radius: 8px;
+    position: absolute;
+    top: 50px;
+    left: 0;
+    width: 300px;
+    box-shadow: 0 1px 8px rgba(0, 0, 0, 0.3);
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-20px);
+    transition: opacity 0.4s ease, transform 0.4s ease, visibility 0.4s;
+}
+
+.menuActive {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+/*
+.menu ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.menu li {
+    border-bottom: 1px solid #dddddd;
+}
+
+.menu li a {
+    text-decoration: none;
+    color: #333333;
+    padding: 15px 20px;
+    display: block;
+}
+
+.dropdown-trigger span {
+    font-weight: 700;
+    vertical-align: middle;
+    font-size: 14px;
+    margin: 0 10px;
+}
+
+.dropdown-trigger img {
+    border-radius: 90px;
 }
 
 .icon {
     height: 20px;
-}
+} */
