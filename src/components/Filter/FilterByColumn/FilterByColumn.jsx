@@ -1,7 +1,7 @@
 import Dropdown from "../../Dropdown/Dropdown";
 import styles from '../../Filter/Filter.module.css';
 
-const FilterByColumn = ({ activeFilter, filterList, select }) => {
+const FilterByColumn = ({ filterList, activeFilter, select }) => {
     return (
         <Dropdown
             trigger=
@@ -10,7 +10,7 @@ const FilterByColumn = ({ activeFilter, filterList, select }) => {
             }
             list=
             {
-                <ul className={styles.list}>
+                <ul>
                     {
                         filterList.map(filter =>
                             <li

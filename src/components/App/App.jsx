@@ -10,9 +10,12 @@ const App = () => {
    const [cars, setCars] = useState([]);
 
    const [filterColumns, seFilterColumns] = useState([]);
-   const [activeFilterColumn, setActiveFilterColumn] = useState('Select filter');
+   const [activeFilterColumn, setActiveFilterColumn] = useState('Select column');
 
-   const generateArrFilter = (data) => {
+   const filterConditions = ['equally', 'more', 'less', 'contains'];
+   const [activeFilterCondition, setActiveFilterCondition] = useState('Select condition');
+
+   const generateArrFilterColumn = (data) => {
       const keys = Object.keys(data[0]);
       const filters = keys.filter(filter => {
          if (filter !== 'date' && filter !== 'id') {
@@ -29,7 +32,7 @@ const App = () => {
             url: `https://mocki.io/v1/92a881cd-33a9-4f44-ab5a-7cc399c34b75`
          })
          setCars(data);
-         seFilterColumns(generateArrFilter(data));
+         seFilterColumns(generateArrFilterColumn(data));
       }
       getData();
    }, [])
@@ -39,11 +42,18 @@ const App = () => {
          <div className={styles.wrapper}>
             <h1 className={styles.title}>React test task (LLC Kanalservice)</h1>
             <Table cars={cars} />
-            <FilterByColumn
-               activeFilter={activeFilterColumn}
-               filterList={filterColumns}
-               select={setActiveFilterColumn}
-            />
+            <div className={styles.dropdowns}>
+               <FilterByColumn
+                  filterList={filterColumns}
+                  activeFilter={activeFilterColumn}
+                  select={setActiveFilterColumn}
+               />
+               <FilterByCondition
+                  filterList={filterConditions}
+                  activeFilter={activeFilterCondition}
+                  select={setActiveFilterCondition}
+               />
+            </div>
          </div>
       </section>
    );

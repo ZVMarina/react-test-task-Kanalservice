@@ -1,20 +1,27 @@
 import Dropdown from "../../Dropdown/Dropdown";
 import styles from '../../Filter/Filter.module.css';
 
-const FilterByCondition = () => {
+const FilterByCondition = ({ filterList, activeFilter, select }) => {
     return (
         <Dropdown
             trigger=
             {
-                <span>Condition</span>
+                <span>{activeFilter}</span>
             }
             list=
             {
                 <ul>
-                    <li className={styles.item}>equally</li>
-                    <li className={styles.item}>more</li>
-                    <li className={styles.item}>less</li>
-                    <li className={styles.item}>contains</li>
+                    {
+                        filterList.map(filter =>
+                            <li
+                                className={styles.item}
+                                key={filter}
+                                onClick={() => select(filter)}
+                            >
+                                {filter}
+                            </li>
+                        )
+                    }
                 </ul>
             }
         />
