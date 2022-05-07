@@ -1,33 +1,34 @@
-import { useRef, useState } from 'react';
+import { useRef } from 'react';
 import styles from './Dropdown.module.css';
-import icon from '../../images/icon.png';
+import { useDetectOutsideClick } from '../../utils/useDetectOutsideClick';
 
-const Dropdown = () => {
+const Dropdown = (props) => {
     const dropdownRef = useRef(null);
-    const [isActive, setIsActive] = useState(false);
+    const triggerRef = useRef(null);
+
+    const [isActive, setIsActive] = useDetectOutsideClick(dropdownRef, triggerRef, false);
 
     const onClick = () => setIsActive(!isActive);
 
     return (
-        <div className={styles.container}>
-            <button 
-                className={styles.trigger}
-                onClick={onClick} 
-            >
-                <span>Filter</span>
-                {/* <img className={styles.icon} src={icon} alt="icon" /> */}
-            </button>
-            <div 
-                ref={dropdownRef} 
-                className={`${styles.menu} ${isActive ? styles.menuActive : ''}`}
-            >
-                <ul>
-                    <li>name</li>
-                    <li>distance</li>
-                    <li>quantity</li>
-                </ul>
+        <>
+            <div className={styles.container}>
+                <button
+                    ref={triggerRef}
+                    className={styles.trigger}
+                    onClick={onClick}
+                >
+                    { props.trigger }
+                </button>
+                <div
+                    ref={dropdownRef}
+                    className={`${styles.menu} ${isActive ? styles.menuActive : ''}`}
+                >
+                    { props.list }
+                </div>
             </div>
-        </div>
+        </>
+
     );
 };
 

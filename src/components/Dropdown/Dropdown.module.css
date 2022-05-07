@@ -1,4 +1,4 @@
-.container{
+.container {
     grid-area: dd;
     width: 100%;
     max-width: 30%;
@@ -43,35 +43,7 @@
     transform: translateY(0);
 }
 
-/*
-.menu ul {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-}
-
-.menu li {
+.menuItem {
     border-bottom: 1px solid #dddddd;
+    cursor: pointer;
 }
-
-.menu li a {
-    text-decoration: none;
-    color: #333333;
-    padding: 15px 20px;
-    display: block;
-}
-
-.dropdown-trigger span {
-    font-weight: 700;
-    vertical-align: middle;
-    font-size: 14px;
-    margin: 0 10px;
-}
-
-.dropdown-trigger img {
-    border-radius: 90px;
-}
-
-.icon {
-    height: 20px;
-} */
