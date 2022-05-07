@@ -1,6 +1,7 @@
 import axios from 'axios';
 import { useEffect, useState } from 'react';
-import FilterByColumn from '../FilterByColumn/FilterByColumn';
+import FilterByColumn from '../Filter/FilterByColumn/FilterByColumn';
+import FilterByCondition from '../Filter/FilterByCondition/FilterByCondition';
 import Table from '../Table/Table';
 import styles from './App.module.css'
 
@@ -24,8 +25,8 @@ const App = () => {
          <div className={styles.wrapper}>
             <h1 className={styles.title}>React test task (LLC Kanalservice)</h1>
             <Table cars={cars} />
-            {/* <Dropdown /> */}
             <FilterByColumn />
+            {/* <FilterByCondition /> */}
          </div>
       </section>
    );
