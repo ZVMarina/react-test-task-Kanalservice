@@ -9,8 +9,8 @@ const TableBody = ({ cars }) => {
                   <th scope="row">{car.id}</th>
                   <td>{car.name}</td>
                   <td>{car.distance}</td>
-                  <td>{date.getDay()}-{date.getMonth()}-{date.getFullYear()}</td>
                   <td>{car.quantity}</td>
+                  <td>{date.getDate()}-{date.getMonth() + 1}-{date.getFullYear()}</td>
                </tr>
             }
             )

@@ -10,10 +10,10 @@ const App = () => {
    const [cars, setCars] = useState([]);
 
    const [filterColumns, seFilterColumns] = useState([]);
-   const [activeFilterColumn, setActiveFilterColumn] = useState('Select column');
+   const [activeFilterColumn, setActiveFilterColumn] = useState(null);
 
    const filterConditions = ['equally', 'more', 'less', 'contains'];
-   const [activeFilterCondition, setActiveFilterCondition] = useState('Select condition');
+   const [activeFilterCondition, setActiveFilterCondition] = useState(null);
 
    const generateArrFilterColumn = (data) => {
       const keys = Object.keys(data[0]);
@@ -29,7 +29,7 @@ const App = () => {
       const getData = async () => {
          const { data } = await axios({
             method: `get`,
-            url: `https://mocki.io/v1/92a881cd-33a9-4f44-ab5a-7cc399c34b75`
+            url: `https://mocki.io/v1/443a8013-bb4b-4765-a4d0-07271a80522e`
          })
          setCars(data);
          seFilterColumns(generateArrFilterColumn(data));
@@ -48,11 +48,16 @@ const App = () => {
                   activeFilter={activeFilterColumn}
                   select={setActiveFilterColumn}
                />
-               <FilterByCondition
-                  filterList={filterConditions}
-                  activeFilter={activeFilterCondition}
-                  select={setActiveFilterCondition}
-               />
+               {activeFilterColumn &&
+                  <FilterByCondition
+                     filterList={filterConditions}
+                     activeFilter={activeFilterCondition}
+                     select={setActiveFilterCondition}
+                  />
+               }
+               {activeFilterCondition &&
+                  <input className={styles.input} />
+               }
             </div>
          </div>
       </section>
