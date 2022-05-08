@@ -25,14 +25,14 @@ const App = () => {
          if (item[0] !== 'date' && item[0] !== 'id') {
             if (typeof item[1] === 'number') {
                const filterByNumber = {
-                  title: item[0],
+                  name: item[0],
                   type: typeof item[1]
                }
                filters.push(filterByNumber)
             } else if
                (typeof item[1] === 'string') {
                const filterByString = {
-                  title: item[0],
+                  name: item[0],
                   type: typeof item[1]
                }
                filters.push(filterByString)

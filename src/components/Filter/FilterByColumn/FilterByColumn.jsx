@@ -6,7 +6,7 @@ const FilterByColumn = ({ filterList, activeFilter, selectActiveFilter }) => {
       <Dropdown
          trigger=
          {
-            <span>{activeFilter?.title ? activeFilter.title : 'Select column'}</span>
+            <span>{activeFilter?.name ? activeFilter.name : 'Select column'}</span>
          }
          list=
          {
@@ -15,10 +15,10 @@ const FilterByColumn = ({ filterList, activeFilter, selectActiveFilter }) => {
                   filterList.map(item =>
                      <li
                         className={styles.item}
-                        key={item.title}
+                        key={item.name}
                         onClick={() => selectActiveFilter(item)}
                      >
-                        {item.title}
+                        {item.name}
                      </li>
                   )
                }
