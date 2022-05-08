@@ -10,19 +10,42 @@ const App = () => {
    const [cars, setCars] = useState([]);
 
    const [filterColumns, seFilterColumns] = useState([]);
+   // Активный фильтр - объект { title: 'name', type: 'string' or 'number' }
    const [activeFilterColumn, setActiveFilterColumn] = useState(null);
 
    const filterConditions = ['equally', 'more', 'less', 'contains'];
    const [activeFilterCondition, setActiveFilterCondition] = useState(null);
 
+   let inputValue;
+
    const generateArrFilterColumn = (data) => {
-      const keys = Object.keys(data[0]);
-      const filters = keys.filter(filter => {
-         if (filter !== 'date' && filter !== 'id') {
-            return filter;
+      const filters = []
+      const keysAndValues = Object.entries(data[0]);
+      keysAndValues.forEach(item => {
+         if (item[0] !== 'date' && item[0] !== 'id') {
+            if (typeof item[1] === 'number') {
+               const filterByNumber = {
+                  title: item[0],
+                  type: typeof item[1]
+               }
+               filters.push(filterByNumber)
+            } else if
+               (typeof item[1] === 'string') {
+               const filterByString = {
+                  title: item[0],
+                  type: typeof item[1]
+               }
+               filters.push(filterByString)
+            }
          }
       })
       return filters;
+   }
+
+   const onChangeHandler = (evt) => {
+      inputValue = evt.target.value;
+
+
    }
 
    useEffect(() => {
@@ -46,7 +69,7 @@ const App = () => {
                <FilterByColumn
                   filterList={filterColumns}
                   activeFilter={activeFilterColumn}
-                  select={setActiveFilterColumn}
+                  selectActiveFilter={setActiveFilterColumn}
                />
                {activeFilterColumn &&
                   <FilterByCondition
@@ -56,7 +79,10 @@ const App = () => {
                   />
                }
                {activeFilterCondition &&
-                  <input className={styles.input} />
+                  <input
+                     className={styles.input}
+                     onChange={onChangeHandler}
+                  />
                }
             </div>
          </div>
