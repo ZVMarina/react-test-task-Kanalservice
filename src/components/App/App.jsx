@@ -1,19 +1,25 @@
 import axios from 'axios';
-import { useEffect, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import FilterByColumn from '../Filter/FilterByColumn/FilterByColumn';
 import FilterByCondition from '../Filter/FilterByCondition/FilterByCondition';
 import Table from '../Table/Table';
 import styles from './App.module.css'
 
+const FILTER_CONDITION_BY_STRING = ['contains'];
+const FILTER_CONDITION_BY_NUMBER = ['equally', 'more', 'less'];
 
 const App = () => {
    const [cars, setCars] = useState([]);
 
-   const [filterColumns, seFilterColumns] = useState([]);
+   const [filtersColumn, seFiltersColumn] = useState([]);
    // Активный фильтр - объект { title: 'name', type: 'string' or 'number' }
    const [activeFilterColumn, setActiveFilterColumn] = useState(null);
 
-   const filterConditions = ['equally', 'more', 'less', 'contains'];
+   const filtersCondition = useMemo(() =>
+      activeFilterColumn?.type === 'string'
+         ? FILTER_CONDITION_BY_STRING
+         : FILTER_CONDITION_BY_NUMBER
+   );
    const [activeFilterCondition, setActiveFilterCondition] = useState(null);
 
    let inputValue;
@@ -55,7 +61,7 @@ const App = () => {
             url: `https://mocki.io/v1/443a8013-bb4b-4765-a4d0-07271a80522e`
          })
          setCars(data);
-         seFilterColumns(generateArrFilterColumn(data));
+         seFiltersColumn(generateArrFilterColumn(data));
       }
       getData();
    }, [])
@@ -67,14 +73,14 @@ const App = () => {
             <Table cars={cars} />
             <div className={styles.dropdowns}>
                <FilterByColumn
-                  filterList={filterColumns}
-                  activeFilter={activeFilterColumn}
+                  filtersColumn={filtersColumn}
+                  activeFilterColumn={activeFilterColumn}
                   selectActiveFilter={setActiveFilterColumn}
                />
                {activeFilterColumn &&
                   <FilterByCondition
-                     filterList={filterConditions}
-                     activeFilter={activeFilterCondition}
+                     filtersCondition={filtersCondition}
+                     activeFilterCondition={activeFilterCondition}
                      select={setActiveFilterCondition}
                   />
                }
