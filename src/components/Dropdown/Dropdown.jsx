@@ -2,6 +2,33 @@ import React, { useRef } from 'react';
 import styles from './Dropdown.module.css';
 import useDetectOutsideClick from '../../utils/useDetectOutsideClick';
 
+/* const Dropdown = (props) => {
+    const dropdownRef = useRef(null);
+    const triggerRef = useRef(null);
+
+    const [isActive, setIsActive] = useDetectOutsideClick(dropdownRef, triggerRef, false);
+
+    const onClick = () => setIsActive(!isActive);
+
+    return (
+            <div className={styles.container}>
+                <button
+                    ref={triggerRef}
+                    className={styles.trigger}
+                    onClick={onClick}
+                >
+                    { props.trigger }
+                </button>
+                <div
+                    ref={dropdownRef}
+                    className={`${styles.menu} ${isActive ? styles.menuActive : ''}`}
+                >
+                    { props.list }
+                </div>
+            </div>
+    );
+}; */
+
 class Dropdown extends React.Component {
 
    constructor(props) {
@@ -19,6 +46,29 @@ class Dropdown extends React.Component {
       this.setState({
          isActive: !this.state.isActive,
       });
+   }
+
+   pageClickEvent = (evt) => {
+      if (
+         this.dropdownRef.current !== null
+         && !this.dropdownRef.current.contains(evt.target)
+         && !this.triggerRef.current.contains(evt.target)
+      ) {
+         this.setState({
+            isActive: false,
+         });
+      };
+   }
+
+   componentDidUpdate() {
+      if (this.state.isActive) {
+         window.addEventListener('click', this.pageClickEvent);
+      }
+   }
+   
+
+   componentWillUnmount() {
+      window.removeEventListener('click', this.pageClickEvent);
    }
 
 
