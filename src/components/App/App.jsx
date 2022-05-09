@@ -13,7 +13,7 @@ let newState;
 let inputValue;
 
 const App = () => {
-   const [state, setstate] = useState([]);
+   const [state, setState] = useState([]);
 
    const [filtersColumn, seFiltersColumn] = useState([]);
    // Активный фильтр - объект { title: 'name', type: 'string' or 'number' }
@@ -54,22 +54,37 @@ const App = () => {
       inputValue = evt.target.value;
 
       if (activeFilterColumn.type === 'string') {
-         newState = initialState.filter((item, ind, arr) => {
+         newState = initialState.filter((item) => {
             return item.name.toLowerCase().includes(inputValue.toLowerCase());
          })
-         setstate(newState)
       };
 
-      // if (activeFilterColumn.type === 'number') {
-      //    newState = initialState.filter((item, ind, arr) => {
-      //       return item.name === inputValue;
-      //    })
-      //    setstate(newState)
-      // };
+      if (activeFilterColumn.type === 'number') {
+
+         if (activeFilterCondition === 'equally') {
+            newState = initialState.filter((item) => {
+               return item.distance === Number(inputValue);
+            })
+         }
+
+         if (activeFilterCondition === 'more') {
+            newState = initialState.filter((item) => {
+               return item.distance > Number(inputValue);
+            })
+         }
+
+         if (activeFilterCondition === 'less') {
+            newState = initialState.filter((item) => {
+               return item.distance < Number(inputValue);
+            })
+         }
+      };
 
       if (inputValue === '') {
-         setstate(initialState)
+         newState = initialState;
       };
+
+      setState(newState)
    }
 
    useEffect(() => {
@@ -80,7 +95,7 @@ const App = () => {
          })
 
          initialState = data;
-         setstate(data);
+         setState(data);
          seFiltersColumn(generateArrFilterColumn(data));
       }
       getData();
