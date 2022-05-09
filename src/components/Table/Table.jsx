@@ -11,7 +11,7 @@ const Table = ({ state, newState }) => {
             <TableBody state={state} />
          </table>
          :
-         <p>
+         <p className="no-found-text">
             Ничего не найдено
          </p>
 

@@ -2,3 +2,9 @@
     margin: auto;
     grid-area: table;
 }
+
+.no-found-text {
+   font-size: 20px;
+   text-align: center;
+   margin: auto;
+}
