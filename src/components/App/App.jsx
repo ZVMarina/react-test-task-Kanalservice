@@ -96,7 +96,7 @@ const App = () => {
    const reset = () => {
       setActiveFilterColumn(null);
       setActiveFilterCondition(null);
-      setState(initialState);
+      setState(initialState.slice((page - 1) * PAGE_SIZE, page * PAGE_SIZE))
 
    }
 
