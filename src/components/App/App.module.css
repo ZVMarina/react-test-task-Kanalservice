@@ -10,7 +10,8 @@
    display: grid;
    grid-template-areas:
       "title title"
-      "dd table";
+      "dd table"
+      ". pages";
    align-content: start;
    row-gap: 25px;
    column-gap: 25px;

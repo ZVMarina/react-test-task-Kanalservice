@@ -1,0 +1,16 @@
+.paginator__page {
+    margin-right: 3px;
+    border: 2px solid transparent;
+    padding-left: 4px;
+    padding-right: 4px;
+}
+
+.paginator__page:last-of-type {
+    margin-right: 0;
+}
+
+.paginator__page:hover {
+    cursor: pointer;
+    background-color: transparent;
+    border: 2px solid #2962ff;
+}
