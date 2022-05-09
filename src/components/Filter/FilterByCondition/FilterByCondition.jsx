@@ -6,7 +6,9 @@ const FilterByCondition = ({ filtersCondition, activeFilterCondition, select }) 
       <Dropdown
          trigger=
          {
-            <span>{activeFilterCondition ? activeFilterCondition : 'Select condition'}</span>
+            <span>
+               {activeFilterCondition ? activeFilterCondition : 'Select condition'}
+            </span>
          }
          list=
          {

@@ -11,7 +11,6 @@ const Dropdown = (props) => {
     const onClick = () => setIsActive(!isActive);
 
     return (
-        <>
             <div className={styles.container}>
                 <button
                     ref={triggerRef}
@@ -27,8 +26,6 @@ const Dropdown = (props) => {
                     { props.list }
                 </div>
             </div>
-        </>
-
     );
 };
 
