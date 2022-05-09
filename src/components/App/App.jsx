@@ -93,6 +93,13 @@ const App = () => {
       setPage(page);
    }
 
+   const reset = () => {
+      setActiveFilterColumn(null);
+      setActiveFilterCondition(null);
+      setState(initialState);
+
+   }
+
    useEffect(() => {
       const getData = async () => {
          const { data } = await axios({
@@ -144,6 +151,11 @@ const App = () => {
                      type={activeFilterColumn.type === 'number' ? 'number' : 'string'}
                   />
                }
+               <button
+                  onClick={reset}
+                  className={styles.button}
+               >Reset
+               </button>
             </div>
          </div>
       </section>
