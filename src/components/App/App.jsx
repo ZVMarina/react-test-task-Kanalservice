@@ -2,17 +2,20 @@ import axios from 'axios';
 import { useEffect, useMemo, useState } from 'react';
 import FilterByColumn from '../Filter/FilterByColumn/FilterByColumn';
 import FilterByCondition from '../Filter/FilterByCondition/FilterByCondition';
+import Paginator from '../Paginator/Paginator';
 import Table from '../Table/Table';
 import styles from './App.module.css'
 
 const FILTER_CONDITION_BY_STRING = ['contains'];
 const FILTER_CONDITION_BY_NUMBER = ['equally', 'more', 'less'];
 
-let initialState;
+const PAGE_SIZE = 2;
+
+let initialState = [];
 
 const App = () => {
    const [state, setState] = useState([]);
-
+   const [page, setPage] = useState(1);
    const [filtersColumn, seFiltersColumn] = useState([]);
    // Активный фильтр - объект { title: 'name', type: 'string' or 'number' }
    const [activeFilterColumn, setActiveFilterColumn] = useState(null);
@@ -50,7 +53,7 @@ const App = () => {
 
    const onChangeHandler = (evt) => {
       let newState;
-      let inputValue= evt.target.value;
+      let inputValue = evt.target.value;
 
       if (activeFilterColumn.type === 'string') {
          newState = initialState.filter((item) => {
@@ -86,6 +89,10 @@ const App = () => {
       setState(newState)
    }
 
+   const pageChangeHandler = (page) => {
+      setPage(page);
+   }
+
    useEffect(() => {
       const getData = async () => {
          const { data } = await axios({
@@ -94,17 +101,29 @@ const App = () => {
          })
 
          initialState = data;
-         setState(data);
+         setState(data.slice(0, PAGE_SIZE));
          seFiltersColumn(generateArrFilterColumn(data));
       }
       getData();
    }, [])
 
+   useEffect(() => {
+      setState(initialState.slice((page - 1) * PAGE_SIZE, page * PAGE_SIZE));
+   }, [page])
+
    return (
       <section className={styles.app}>
          <div className={styles.wrapper}>
-            <h1 className={styles.title}>React test task (LLC Kanalservice)</h1>
+            <h1 className={styles.title}>
+               React test task (LLC Kanalservice)
+            </h1>
             <Table state={state} />
+            <Paginator
+               totalItemCount={initialState.length}
+               pageSize={PAGE_SIZE}
+               currentPage={page}
+               pageChangeHandler={pageChangeHandler}
+            />
             <div className={styles.dropdowns}>
                <FilterByColumn
                   filtersColumn={filtersColumn}
