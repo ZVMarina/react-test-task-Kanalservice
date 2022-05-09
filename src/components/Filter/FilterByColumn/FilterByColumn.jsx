@@ -3,8 +3,16 @@ import Dropdown from "../../Dropdown/Dropdown";
 import styles from '../../Filter/Filter.module.css';
 
 const FilterByColumn = ({ filtersColumn, activeFilterColumn, selectActiveFilter }) => {
+   const dropdownColumnRef = useRef(null);
+
+   const select = (item) => {
+      selectActiveFilter(item);
+      dropdownColumnRef.current.toggleShowMenu();
+   }
+
    return (
       <Dropdown
+         ref={dropdownColumnRef}
          trigger=
          {
             <span>{activeFilterColumn?.name ? activeFilterColumn.name : 'Select column'}</span>
@@ -17,7 +25,7 @@ const FilterByColumn = ({ filtersColumn, activeFilterColumn, selectActiveFilter 
                      <li
                         className={styles.item}
                         key={item.name}
-                        onClick={() => selectActiveFilter(item)}
+                        onClick={() => select(item)}
                      >
                         {item.name}
                      </li>
