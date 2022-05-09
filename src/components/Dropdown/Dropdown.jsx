@@ -1,32 +1,46 @@
-import { useRef } from 'react';
+import React, { useRef } from 'react';
 import styles from './Dropdown.module.css';
-import { useDetectOutsideClick } from '../../utils/useDetectOutsideClick';
+import useDetectOutsideClick from '../../utils/useDetectOutsideClick';
 
-const Dropdown = (props) => {
-    const dropdownRef = useRef(null);
-    const triggerRef = useRef(null);
+class Dropdown extends React.Component {
 
-    const [isActive, setIsActive] = useDetectOutsideClick(dropdownRef, triggerRef, false);
+   constructor(props) {
+      super(props);
 
-    const onClick = () => setIsActive(!isActive);
+      this.dropdownRef = React.createRef();
+      this.triggerRef = React.createRef();
 
-    return (
-            <div className={styles.container}>
-                <button
-                    ref={triggerRef}
-                    className={styles.trigger}
-                    onClick={onClick}
-                >
-                    { props.trigger }
-                </button>
-                <div
-                    ref={dropdownRef}
-                    className={`${styles.menu} ${isActive ? styles.menuActive : ''}`}
-                >
-                    { props.list }
-                </div>
+      this.state = {
+         isActive: false,
+      };
+   }
+
+   toggleShowMenu = () => {
+      this.setState({
+         isActive: !this.state.isActive,
+      });
+   }
+
+
+   render() {
+      return (
+         <div className={styles.container}>
+            <button
+               ref={this.triggerRef}
+               className={styles.trigger}
+               onClick={this.toggleShowMenu}
+            >
+               {this.props.trigger}
+            </button>
+            <div
+               ref={this.dropdownRef}
+               className={`${styles.menu} ${this.state.isActive ? styles.menuActive : ''}`}
+            >
+               {this.props.list}
             </div>
-    );
+         </div>
+      )
+   }
 };
 
 export default Dropdown;
