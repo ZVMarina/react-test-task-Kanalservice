@@ -1,33 +1,44 @@
 .app {
-    height: 100vh;
+   height: 100vh;
 }
 
 .wrapper {
-    width: 100%;
-    height: 100%;
-    padding: 0 25px;
-    margin-top: 50px;
-    display: grid;
-    grid-template-areas: 
-    "title title"
-    "dd table";
-    align-content: start;
-    row-gap: 25px;
-    column-gap: 25px;
-    grid-template-columns: min-content;
+   width: 100%;
+   height: 100%;
+   padding: 0 25px;
+   margin-top: 50px;
+   display: grid;
+   grid-template-areas:
+      "title title"
+      "dd table";
+   align-content: start;
+   row-gap: 25px;
+   column-gap: 25px;
+   grid-template-columns: min-content;
 
 }
 
 .title {
-    grid-area: title;
-    text-align: center;
-    margin: 0;
-} 
+   grid-area: title;
+   text-align: center;
+   margin: 0;
+}
 
 .dropdowns {
-    grid-area: dd;
-    margin-top: 8px;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
+   grid-area: dd;
+   margin-top: 8px;
+   display: flex;
+   flex-direction: column;
+   gap: 32px;
+}
+
+.input {
+   border: 1px solid #dee2e6;
+   box-sizing: border-box;
+   font-family: inherit;
+   font-size: 16px;
+   font-weight: 400;
+   line-height: 2;
+   padding-left: 5px;
+   width: 100%;
 }

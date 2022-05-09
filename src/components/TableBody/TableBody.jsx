@@ -1,8 +1,8 @@
-const TableBody = ({ cars }) => {
+const TableBody = ({ state }) => {
    return (
       <tbody>
          {
-            cars.map((car) => {
+            state.map((car) => {
                const date = new Date(car.date);
 
                return <tr key={car.id}>

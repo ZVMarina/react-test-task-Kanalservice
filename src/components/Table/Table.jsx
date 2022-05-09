@@ -2,14 +2,15 @@ import React from "react";
 import TableBody from "../TableBody/TableBody";
 import TableHeader from "../TableHeader/TableHeader";
 
-const Table = ({ cars }) => {
+const Table = ({ state, newState }) => {
    return (
-      cars.length
-      &&
+      state.length
+         &&
          <table className="table table-striped">
-            <TableHeader cars={cars} />
-            <TableBody cars={cars} />
+            <TableHeader state={state} />
+            <TableBody state={state} />
          </table>
+
    )
 };
 

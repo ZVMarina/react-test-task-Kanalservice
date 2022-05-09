@@ -8,8 +8,12 @@ import styles from './App.module.css'
 const FILTER_CONDITION_BY_STRING = ['contains'];
 const FILTER_CONDITION_BY_NUMBER = ['equally', 'more', 'less'];
 
+let initialState;
+let newState;
+let inputValue;
+
 const App = () => {
-   const [cars, setCars] = useState([]);
+   const [state, setstate] = useState([]);
 
    const [filtersColumn, seFiltersColumn] = useState([]);
    // Активный фильтр - объект { title: 'name', type: 'string' or 'number' }
@@ -21,8 +25,6 @@ const App = () => {
          : FILTER_CONDITION_BY_NUMBER
    );
    const [activeFilterCondition, setActiveFilterCondition] = useState(null);
-
-   let inputValue;
 
    const generateArrFilterColumn = (data) => {
       const filters = []
@@ -51,7 +53,16 @@ const App = () => {
    const onChangeHandler = (evt) => {
       inputValue = evt.target.value;
 
+      if (activeFilterColumn.type === 'string') {
+         newState = initialState.filter((item, ind, arr) => {
+            return item.name === inputValue;
+         })
+         setstate(newState)
+      };
 
+      if (inputValue === '') {
+         setstate(initialState)
+      };
    }
 
    useEffect(() => {
@@ -60,7 +71,9 @@ const App = () => {
             method: `get`,
             url: `https://mocki.io/v1/443a8013-bb4b-4765-a4d0-07271a80522e`
          })
-         setCars(data);
+
+         initialState = data;
+         setstate(data);
          seFiltersColumn(generateArrFilterColumn(data));
       }
       getData();
@@ -70,7 +83,7 @@ const App = () => {
       <section className={styles.app}>
          <div className={styles.wrapper}>
             <h1 className={styles.title}>React test task (LLC Kanalservice)</h1>
-            <Table cars={cars} />
+            <Table state={state} />
             <div className={styles.dropdowns}>
                <FilterByColumn
                   filtersColumn={filtersColumn}
