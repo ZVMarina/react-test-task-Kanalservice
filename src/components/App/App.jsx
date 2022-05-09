@@ -55,10 +55,17 @@ const App = () => {
 
       if (activeFilterColumn.type === 'string') {
          newState = initialState.filter((item, ind, arr) => {
-            return item.name === inputValue;
+            return item.name.toLowerCase().includes(inputValue.toLowerCase());
          })
          setstate(newState)
       };
+
+      // if (activeFilterColumn.type === 'number') {
+      //    newState = initialState.filter((item, ind, arr) => {
+      //       return item.name === inputValue;
+      //    })
+      //    setstate(newState)
+      // };
 
       if (inputValue === '') {
          setstate(initialState)
