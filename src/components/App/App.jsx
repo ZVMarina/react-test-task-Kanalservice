@@ -81,7 +81,7 @@ const App = () => {
                   <FilterByCondition
                      filtersCondition={filtersCondition}
                      activeFilterCondition={activeFilterCondition}
-                     select={setActiveFilterCondition}
+                     selectActiveFilter={setActiveFilterCondition}
                   />
                }
                {activeFilterCondition &&

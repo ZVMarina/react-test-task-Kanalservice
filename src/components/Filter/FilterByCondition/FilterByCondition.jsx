@@ -1,9 +1,18 @@
+import { useRef } from "react";
 import Dropdown from "../../Dropdown/Dropdown";
 import styles from '../../Filter/Filter.module.css';
 
-const FilterByCondition = ({ filtersCondition, activeFilterCondition, select }) => {
+const FilterByCondition = ({ filtersCondition, activeFilterCondition, selectActiveFilter }) => {
+   const dropdownConditionRef = useRef(null);
+
+   const select = (filter) => {
+      selectActiveFilter(filter);
+      dropdownConditionRef.current.toggleShowMenu();
+   }
+
    return (
       <Dropdown
+         ref={dropdownConditionRef}
          trigger=
          {
             <span>
