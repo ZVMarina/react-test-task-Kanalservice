@@ -25,7 +25,7 @@ const Table = ({ state }) => {
             </p>
          }
          <Paginator
-            totalLinesCount={5}
+            totalItemCount={5}
             pageSize={3}
             currentPage={page}
             pageChangeHandler={pageChangeHandler}

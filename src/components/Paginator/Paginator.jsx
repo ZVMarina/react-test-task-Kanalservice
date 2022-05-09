@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 
-const Paginator = ({ totalLinesCount, pageSize, currentPage, pageChangeHandler, portionSize = 15 }) => {
-    const pagesCount = Math.ceil(totalLinesCount / pageSize); // количество страниц
+const Paginator = ({ totalItemCount, pageSize, currentPage, pageChangeHandler, portionSize = 15 }) => {
+    const pagesCount = Math.ceil(totalItemCount / pageSize); // количество страниц
 
     const pages = [];
 

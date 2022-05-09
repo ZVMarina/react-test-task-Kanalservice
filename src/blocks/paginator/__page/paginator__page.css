@@ -12,5 +12,5 @@
 .paginator__page:hover {
     cursor: pointer;
     background-color: transparent;
-    border: 2px solid #2962ff;
+    border: 2px solid #dee2e6;
 }
