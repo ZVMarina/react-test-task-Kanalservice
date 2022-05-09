@@ -108,6 +108,7 @@ const App = () => {
                   <input
                      className={styles.input}
                      onChange={onChangeHandler}
+                     type={activeFilterColumn.type === 'number' ? 'number' : 'string'}
                   />
                }
             </div>
