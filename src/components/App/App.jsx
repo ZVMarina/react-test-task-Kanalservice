@@ -60,23 +60,23 @@ const App = () => {
       };
 
       if (activeFilterColumn.type === 'number') {
+         switch (activeFilterCondition) {
+            case 'equally':
+               newState = initialState.filter((item) => {
+                  return item.distance === Number(inputValue);
+               })
+               break
 
-         if (activeFilterCondition === 'equally') {
-            newState = initialState.filter((item) => {
-               return item.distance === Number(inputValue);
-            })
-         }
+            case 'more':
+               newState = initialState.filter((item) => {
+                  return item.distance > Number(inputValue);
+               })
+               break
 
-         if (activeFilterCondition === 'more') {
-            newState = initialState.filter((item) => {
-               return item.distance > Number(inputValue);
-            })
-         }
-
-         if (activeFilterCondition === 'less') {
-            newState = initialState.filter((item) => {
-               return item.distance < Number(inputValue);
-            })
+            case 'less':
+               newState = initialState.filter((item) => {
+                  return item.distance < Number(inputValue);
+               })
          }
       };
 
