@@ -9,8 +9,6 @@ const FILTER_CONDITION_BY_STRING = ['contains'];
 const FILTER_CONDITION_BY_NUMBER = ['equally', 'more', 'less'];
 
 let initialState;
-let newState;
-let inputValue;
 
 const App = () => {
    const [state, setState] = useState([]);
@@ -51,7 +49,8 @@ const App = () => {
    }
 
    const onChangeHandler = (evt) => {
-      inputValue = evt.target.value;
+      let newState;
+      let inputValue= evt.target.value;
 
       if (activeFilterColumn.type === 'string') {
          newState = initialState.filter((item) => {
