@@ -33,13 +33,13 @@ const App = () => {
    
    const [activeFilterCondition, setActiveFilterCondition] = useState(null);
 
+   const [filterInputValue, setFilterInputValue] = useState('');
+   
    const filterIsActive = useMemo(() =>
       activeFilterColumn !== null
       && activeFilterCondition !== null
       && filterInputValue
    )
-
-   const [filterInputValue, setFilterInputValue] = useState('');
 
    const generateArrFilterColumn = (data) => {
       const filters = []
