@@ -111,7 +111,7 @@ const App = () => {
       const getData = async () => {
          const { data } = await axios({
             method: `get`,
-            url: `https://mocki.io/v1/443a8013-bb4b-4765-a4d0-07271a80522e`
+            url: `https://mocki.io/v1/36da218f-8647-49f4-b7aa-ed1a9f2a6c36`
          })
 
          initialState = data;
