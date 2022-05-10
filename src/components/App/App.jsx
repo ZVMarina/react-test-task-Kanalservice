@@ -83,7 +83,7 @@ const App = () => {
       };
 
       if (inputValue === '') {
-         newState = initialState;
+         newState = initialState.slice((page - 1) * PAGE_SIZE, page * PAGE_SIZE);
       };
 
       setState(newState)
@@ -136,6 +136,7 @@ const App = () => {
                   filtersColumn={filtersColumn}
                   activeFilterColumn={activeFilterColumn}
                   selectActiveFilter={setActiveFilterColumn}
+                  /* activeFilterCondition={activeFilterCondition} */
                />
                {activeFilterColumn &&
                   <FilterByCondition

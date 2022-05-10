@@ -1,9 +1,19 @@
-import { useRef } from "react";
+import { useRef, useState } from "react";
 import Dropdown from "../../Dropdown/Dropdown";
 import styles from '../../Filter/Filter.module.css';
 
-const FilterByColumn = ({ filtersColumn, activeFilterColumn, selectActiveFilter }) => {
+const FilterByColumn = ({ filtersColumn, activeFilterColumn, selectActiveFilter, activeFilterCondition }) => {
+   /* console.log(activeFilterCondition);
+   console.log(activeFilterColumn); */
+
    const dropdownColumnRef = useRef(null);
+   /* const [disabled, setDisabled] = useState(false);
+
+   const disabledFilterColumn = () => {
+      if (activeFilterCondition) {
+         setDisabled(true);
+      }
+   } */
 
    const select = (item) => {
       selectActiveFilter(item);
@@ -33,6 +43,7 @@ const FilterByColumn = ({ filtersColumn, activeFilterColumn, selectActiveFilter 
                }
             </ul>
          }
+         /* disabled={disabled} */
       />
    )
 }
