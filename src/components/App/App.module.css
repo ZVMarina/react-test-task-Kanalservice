@@ -48,9 +48,11 @@
    border: none;
    padding-top: 5px;
    padding-bottom: 5px;
-   transition: background-color .3s ease;
+   border-radius: 5px;
+   box-shadow: 0 4px 0 #dee2e6;
+   transition: background-color .3s ease, box-shadow .3s ease;
 }
 
-.button:hover {
-   background-color: #c8ccd0;
+.button:active {
+   box-shadow: 0px 3px 0px #dee2e6;
 }

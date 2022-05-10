@@ -14,16 +14,15 @@
    font-size: 16px;
    font-weight: normal;
    cursor: pointer;
-   background-color: #dee2e6;
    border: none;
    border-radius: 5px;
-   box-shadow: 0 4px 0 #c6cacd;
+   box-shadow: 0 4px 0 #dce0e3;
    color: black;
    transition: background-color .3s ease, box-shadow .3s ease;
 }
 
 .button:active {
-   box-shadow: 0px 3px 0px #c6cacd;
+   box-shadow: 0px 3px 0px #dce0e3;
 }
 
 .button_nextBack {
@@ -40,7 +39,8 @@
 }
 
 .button_firstLast:hover {
-   border: 2px solid #c6cacd;
+   border: 2px solid #dee2e6;
+   background-color: none;
 }
 
 .button_firstLast:first-of-type {
