@@ -9,13 +9,18 @@ import styles from './App.module.css'
 const FILTER_CONDITION_BY_STRING = ['contains'];
 const FILTER_CONDITION_BY_NUMBER = ['equally', 'more', 'less'];
 
-const PAGE_SIZE = 2;
+const PAGE_SIZE = 3;
 
 let initialState = [];
 
 const App = () => {
+   // Количество элементов на странице
    const [state, setState] = useState([]);
+   // Количество найденных элементов
+   const [findState, setFindState] = useState([]);
+
    const [page, setPage] = useState(1);
+
    const [filtersColumn, seFiltersColumn] = useState([]);
    // Активный фильтр - объект { title: 'name', type: 'string' or 'number' }
    const [activeFilterColumn, setActiveFilterColumn] = useState(null);
@@ -26,6 +31,8 @@ const App = () => {
          : FILTER_CONDITION_BY_NUMBER
    );
    const [activeFilterCondition, setActiveFilterCondition] = useState(null);
+
+   const [filterInputValue, setFilterInputValue] = useState('');
 
    const generateArrFilterColumn = (data) => {
       const filters = []
@@ -51,42 +58,42 @@ const App = () => {
       return filters;
    }
 
-   const onChangeHandler = (evt) => {
-      let newState;
-      let inputValue = evt.target.value;
+   const onChangeHandler = () => {
+      let filteredState = [];
 
-      if (activeFilterColumn.type === 'string') {
-         newState = initialState.filter((item) => {
-            return item.name.toLowerCase().includes(inputValue.toLowerCase());
+      if (activeFilterColumn?.type === 'string') {
+         filteredState = initialState.filter((item) => {
+            return item.name.toLowerCase().includes(filterInputValue.toLowerCase());
          })
       };
 
-      if (activeFilterColumn.type === 'number') {
+      if (activeFilterColumn?.type === 'number') {
          switch (activeFilterCondition) {
             case 'equally':
-               newState = initialState.filter((item) => {
-                  return item.distance === Number(inputValue);
+               filteredState = initialState.filter((item) => {
+                  return item[activeFilterColumn.name] === Number(filterInputValue);
                })
                break
 
             case 'more':
-               newState = initialState.filter((item) => {
-                  return item.distance > Number(inputValue);
+               filteredState = initialState.filter((item) => {
+                  return item[activeFilterColumn.name] > Number(filterInputValue);
                })
                break
 
             case 'less':
-               newState = initialState.filter((item) => {
-                  return item.distance < Number(inputValue);
+               filteredState = initialState.filter((item) => {
+                  return item[activeFilterColumn.name] < Number(filterInputValue);
                })
          }
       };
 
-      if (inputValue === '') {
-         newState = initialState.slice((page - 1) * PAGE_SIZE, page * PAGE_SIZE);
+      if (filterInputValue === '') {
+         filteredState = initialState.slice((page - 1) * PAGE_SIZE, page * PAGE_SIZE);
       };
 
-      setState(newState)
+      setFindState(filteredState);
+      setState(filteredState.slice((page - 1) * PAGE_SIZE, page * PAGE_SIZE));
    }
 
    const pageChangeHandler = (page) => {
@@ -96,6 +103,7 @@ const App = () => {
    const reset = () => {
       setActiveFilterColumn(null);
       setActiveFilterCondition(null);
+      setFilterInputValue('');
       setState(initialState.slice((page - 1) * PAGE_SIZE, page * PAGE_SIZE))
    }
 
@@ -113,9 +121,21 @@ const App = () => {
       getData();
    }, [])
 
+   const filterIsActive = useMemo(() =>
+      activeFilterColumn !== null
+      && activeFilterCondition !== null
+      && filterInputValue
+   )
+
    useEffect(() => {
-      setState(initialState.slice((page - 1) * PAGE_SIZE, page * PAGE_SIZE));
+      setState(filterIsActive ?
+         findState.slice((page - 1) * PAGE_SIZE, page * PAGE_SIZE)
+         : initialState.slice((page - 1) * PAGE_SIZE, page * PAGE_SIZE));
    }, [page])
+
+   useEffect(() => {
+      onChangeHandler();
+   }, [filterInputValue])
 
    return (
       <section className={styles.app}>
@@ -125,7 +145,7 @@ const App = () => {
             </h1>
             <Table state={state} />
             <Paginator
-               totalItemCount={initialState.length}
+               totalItemCount={filterIsActive ? findState.length : initialState.length}
                pageSize={PAGE_SIZE}
                currentPage={page}
                pageChangeHandler={pageChangeHandler}
@@ -147,7 +167,7 @@ const App = () => {
                {activeFilterCondition &&
                   <input
                      className={styles.input}
-                     onChange={onChangeHandler}
+                     onInput={(event) => setFilterInputValue(event.target.value)}
                      type={activeFilterColumn.type === 'number' ? 'number' : 'string'}
                   />
                }
