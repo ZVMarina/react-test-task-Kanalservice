@@ -9,3 +9,73 @@
    margin-bottom: 20px;
    max-width: 100%;
 }
+
+.button {
+   font-size: 16px;
+   font-weight: normal;
+   cursor: pointer;
+   background-color: #dee2e6;
+   border: none;
+   border-radius: 5px;
+   box-shadow: 0 4px 0 #c6cacd;
+   color: black;
+   transition: background-color .3s ease, box-shadow .3s ease;
+}
+
+.button:active {
+   box-shadow: 0px 3px 0px #c6cacd;
+}
+
+.button_nextBack {
+   margin-left: 5px;
+   margin-right: 5px;
+   padding: 4px 10px;
+}
+
+.button_firstLast {
+   border-radius: 0px;
+   box-shadow: none;
+   background-color: transparent;
+   border: 2px solid transparent;
+}
+
+.button_firstLast:hover {
+   border: 2px solid #c6cacd;
+}
+
+.button_firstLast:first-of-type {
+   padding-right: 5px;
+}
+
+.button_firstLast:last-of-type {
+   padding-left: 5px;
+}
+
+.button_withoutIndent {
+   margin-left: 2px;
+}
+
+.page {
+   margin-right: 3px;
+   border: 2px solid transparent;
+   padding-left: 4px;
+   padding-right: 4px;
+}
+
+.page:last-of-type {
+   margin-right: 0;
+}
+
+.page:hover {
+   cursor: pointer;
+   background-color: transparent;
+   border: 2px solid #dee2e6;
+}
+
+.page_active {
+   font-weight: 700;
+   border: 2px solid #dee2e6;
+   padding-left: 4px;
+   padding-right: 4px;
+   margin-right: 3px;
+}

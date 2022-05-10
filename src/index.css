@@ -1,9 +1,2 @@
 @import url(./vendor//normalize.css);
 @import url(./components/Table/Table.css);
-
-@import url(./blocks/paginator/paginator.css);
-@import url(./blocks/paginator/__page/paginator__page.css);
-@import url(./blocks/paginator/__page/_active/paginator__page_active.css);
-@import url(./blocks/paginator/__button/_type/paginator__button_type_first-last-page.css);
-@import url(./blocks/paginator/__button/_type/paginator__button_type_next-back.css);
-@import url(./blocks/paginator/__button/_without-indent/paginator__button_without-indent.css);
