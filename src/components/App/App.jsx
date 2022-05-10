@@ -136,7 +136,7 @@ const App = () => {
                   filtersColumn={filtersColumn}
                   activeFilterColumn={activeFilterColumn}
                   selectActiveFilter={setActiveFilterColumn}
-                  /* activeFilterCondition={activeFilterCondition} */
+                  setActiveFilterCondition={setActiveFilterCondition}
                />
                {activeFilterColumn &&
                   <FilterByCondition

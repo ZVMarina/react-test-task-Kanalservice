@@ -2,22 +2,13 @@ import { useRef, useState } from "react";
 import Dropdown from "../../Dropdown/Dropdown";
 import styles from '../../Filter/Filter.module.css';
 
-const FilterByColumn = ({ filtersColumn, activeFilterColumn, selectActiveFilter, activeFilterCondition }) => {
-   /* console.log(activeFilterCondition);
-   console.log(activeFilterColumn); */
-
+const FilterByColumn = ({ filtersColumn, activeFilterColumn, selectActiveFilter, setActiveFilterCondition }) => {
    const dropdownColumnRef = useRef(null);
-   /* const [disabled, setDisabled] = useState(false);
-
-   const disabledFilterColumn = () => {
-      if (activeFilterCondition) {
-         setDisabled(true);
-      }
-   } */
 
    const select = (item) => {
       selectActiveFilter(item);
       dropdownColumnRef.current.toggleShowMenu();
+      setActiveFilterCondition(null);
    }
 
    return (
@@ -43,7 +34,6 @@ const FilterByColumn = ({ filtersColumn, activeFilterColumn, selectActiveFilter,
                }
             </ul>
          }
-         /* disabled={disabled} */
       />
    )
 }
