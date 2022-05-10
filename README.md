@@ -19,3 +19,7 @@ Development of a table in the Single Page Application format.
 * React (Hooks, Class)
 * HTML
 * CSS
+
+### Link to GitHub Pages
+
+[Data filtering (table)](https://zvmarina.github.io/react-test-task-Kanalservice/)
