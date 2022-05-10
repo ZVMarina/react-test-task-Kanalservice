@@ -30,7 +30,14 @@ const App = () => {
          ? FILTER_CONDITION_BY_STRING
          : FILTER_CONDITION_BY_NUMBER
    );
+   
    const [activeFilterCondition, setActiveFilterCondition] = useState(null);
+
+   const filterIsActive = useMemo(() =>
+      activeFilterColumn !== null
+      && activeFilterCondition !== null
+      && filterInputValue
+   )
 
    const [filterInputValue, setFilterInputValue] = useState('');
 
@@ -58,7 +65,7 @@ const App = () => {
       return filters;
    }
 
-   const onChangeHandler = () => {
+   const onInputHandler = () => {
       let filteredState = [];
 
       if (activeFilterColumn?.type === 'string') {
@@ -121,12 +128,6 @@ const App = () => {
       getData();
    }, [])
 
-   const filterIsActive = useMemo(() =>
-      activeFilterColumn !== null
-      && activeFilterCondition !== null
-      && filterInputValue
-   )
-
    useEffect(() => {
       setState(filterIsActive ?
          findState.slice((page - 1) * PAGE_SIZE, page * PAGE_SIZE)
@@ -134,7 +135,7 @@ const App = () => {
    }, [page])
 
    useEffect(() => {
-      onChangeHandler();
+      onInputHandler();
    }, [filterInputValue])
 
    return (
