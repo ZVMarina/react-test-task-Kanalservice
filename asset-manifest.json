@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/react-test-task-Kanalservice/static/css/main.df895d9b.css",
+    "main.js": "/react-test-task-Kanalservice/static/js/main.1a6f2b99.js",
+    "static/js/787.28cb0dcd.chunk.js": "/react-test-task-Kanalservice/static/js/787.28cb0dcd.chunk.js",
+    "index.html": "/react-test-task-Kanalservice/index.html",
+    "main.df895d9b.css.map": "/react-test-task-Kanalservice/static/css/main.df895d9b.css.map",
+    "main.1a6f2b99.js.map": "/react-test-task-Kanalservice/static/js/main.1a6f2b99.js.map",
+    "787.28cb0dcd.chunk.js.map": "/react-test-task-Kanalservice/static/js/787.28cb0dcd.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.df895d9b.css",
+    "static/js/main.1a6f2b99.js"
+  ]
+}
