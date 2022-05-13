@@ -22,4 +22,4 @@ Development of a table in the Single Page Application format.
 
 ### Link to GitHub Pages
 
-[Data filtering (table)](https://zvmarina.github.io/react-test-task-Kanalservice/)
+[Data filtering (table)](https://zvmarina.github.io/react-test-task-kanalservice/ "Data filtering (table)")
