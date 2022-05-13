@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/react-test-task-Kanalservice/static/css/main.bb693b15.css",
-    "main.js": "/react-test-task-Kanalservice/static/js/main.a28cb47c.js",
-    "static/js/787.28cb0dcd.chunk.js": "/react-test-task-Kanalservice/static/js/787.28cb0dcd.chunk.js",
-    "index.html": "/react-test-task-Kanalservice/index.html",
-    "main.bb693b15.css.map": "/react-test-task-Kanalservice/static/css/main.bb693b15.css.map",
-    "main.a28cb47c.js.map": "/react-test-task-Kanalservice/static/js/main.a28cb47c.js.map",
-    "787.28cb0dcd.chunk.js.map": "/react-test-task-Kanalservice/static/js/787.28cb0dcd.chunk.js.map"
+    "main.css": "/react-test-task-kanalservice/static/css/main.bb693b15.css",
+    "main.js": "/react-test-task-kanalservice/static/js/main.c5e25bb6.js",
+    "static/js/787.28cb0dcd.chunk.js": "/react-test-task-kanalservice/static/js/787.28cb0dcd.chunk.js",
+    "index.html": "/react-test-task-kanalservice/index.html",
+    "main.bb693b15.css.map": "/react-test-task-kanalservice/static/css/main.bb693b15.css.map",
+    "main.c5e25bb6.js.map": "/react-test-task-kanalservice/static/js/main.c5e25bb6.js.map",
+    "787.28cb0dcd.chunk.js.map": "/react-test-task-kanalservice/static/js/787.28cb0dcd.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.bb693b15.css",
-    "static/js/main.a28cb47c.js"
+    "static/js/main.c5e25bb6.js"
   ]
 }
