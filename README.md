@@ -12,7 +12,7 @@ Development of a table in the Single Page Application format.
 * Selecting the column to filter by
 * Condition selection (equal to, contains, greater than, less than)
 * Field for entering values for filtering
-3. The table contains pagination.
+3. The table contains pagination
 
 ### Stack
 
