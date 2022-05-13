@@ -5,7 +5,7 @@
 Development of a table in the Single Page Application format.
 1. The table contains 4 columns:
 * Date
-* Title
+* Name
 * Quantity
 * Distance
 2. The table is sorted by all fields except the date. Filtering is presented in the form of two drop-down lists and a text field.
